@@ -5,8 +5,11 @@ module Html
   , Title
   , Structure
   , html_
-  , p_
   , h1_
+  , p_
+  , ul_
+  , ol_
+  , code_
   , render
   )
   where

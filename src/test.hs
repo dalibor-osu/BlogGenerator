@@ -70,3 +70,18 @@ isEmpty list =
     [] -> True
     _ -> False
 
+Document = [Structure]
+
+maybe :: b -> (a -> b) -> Maybe a -> b
+maybe :: Document -> (Structure -> Document) -> Maybe Structure -> Document
+maybe :: [Structure] -> (Strucutre -> [Structure]) -> Maybe Structure -> [Strucutre]
+            id                      (:)                    context 1
+maybe id (:) context (parseLines Nothing rest)
+
+
+
+
+
+
+
+
