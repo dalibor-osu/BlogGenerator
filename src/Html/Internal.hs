@@ -1,6 +1,7 @@
 -- Internal.hs
 
 module Html.Internal where
+import GHC.Natural (Natural)
 
 -- * Types
 
@@ -30,8 +31,8 @@ p_ = Structure . el "p" . escape
 code_ :: String -> Structure
 code_ = Structure . el "pre" . escape
 
-h1_ :: String -> Structure
-h1_ = Structure . el "h1" . escape
+h_ :: Natural -> String -> Structure
+h_ n = Structure . el ("h" <> show n) . escape
 
 ul_ :: [Structure] -> Structure
 ul_ =
@@ -40,6 +41,12 @@ ul_ =
 ol_ :: [Structure] -> Structure
 ol_ =
     Structure . el "ol" . concatMap (el "li" . getStructureString)
+
+empty_ :: Structure
+empty_ = Structure ""
+
+instance Monoid Structure where
+  mempty = empty_
 
 instance Semigroup Structure where
   (<>) c1 c2 =
@@ -76,4 +83,3 @@ escape =
         _ -> [c]
   in
     concatMap escapeChar
-
